@@ -293,3 +293,90 @@ if ($(".this-is-about")[0]){
     }
   });
 }
+
+//LOCATIONS CODE
+if ($(".this-is-loc")[0]){
+  let splide1 = new Splide('.slider1', {
+    perPage: 2,
+    perMove: 1,
+    speed : 800,
+    autoWidth: true,
+    updateOnMove : true,
+    trimSpace: true,
+    autoplay: true,
+    interval: 4000,
+    type: 'loop',
+    pauseOnHover: false,
+    pauseOnFocus: false,
+  }).mount();
+
+  //arrows anim
+  // For Slider 1
+  /*splide1.on('moved', function () {
+    let $sliderSection = $('.slider1').closest('.section');
+    let totalSlides = splide1.length;
+    let currentIndex = splide1.index;
+
+    // Disable prev arrow if on the first slide
+    if (currentIndex === 0) {
+      $sliderSection.find('.prev-arrow-n').removeClass('active_arrow');
+    } else {
+      $sliderSection.find('.prev-arrow-n').addClass('active_arrow');
+    }
+
+    // Disable next arrow if at the last slide
+    if (currentIndex >= totalSlides - splide1.options.perPage) {
+      $sliderSection.find('.next-arrow-n').removeClass('active_arrow');
+    } else {
+      $sliderSection.find('.next-arrow-n').addClass('active_arrow');
+    }
+  });*/
+
+  $('.small-box.open').on('click', function() {
+    $(this).closest('.info-container').siblings().find('.small-box.open').removeClass('smallbox-hide');
+    $(this).closest('.info-container').siblings().find('.icon-content').removeClass('inside-opacity-100');
+    $(this).toggleClass('smallbox-hide');
+    $(this).closest('.info-container').find('.icon-content').toggleClass('inside-opacity-100');
+  });
+
+  $(".quick-view").on("click", function () {
+    let quickViewValue = $(this).attr("quick-view");
+    $(".quick-view-item").removeClass("quick-view-open");
+    $(`.quick-view-item[quick-view="${quickViewValue}"]`).addClass("quick-view-open");
+
+    $('body').addClass('no-scroll');
+  });
+
+  $('.quick-view-overlay, .quick-close').on('click', function() {
+    $('body').removeClass('no-scroll');
+    setTimeout(function() {
+      $(".quick-view-item").removeClass("quick-view-open");
+    }, 250);
+  });
+}
+
+//PRICING
+
+if ($(".this-is-pricing")[0]){
+  $('.price-tab').on('click', function() {
+    $(this).addClass('active-price');
+    $(this).siblings().removeClass('active-price');
+  });
+
+  const cP = document.querySelector("#credit-packages");
+  $('.footer-link.cp').click(function() {
+    cP.click();
+  });
+
+  document.addEventListener("DOMContentLoaded", function () {
+    if (window.location.hash === "#credit-packages") {
+      setTimeout(() => {
+        const creditPackage = document.querySelector("#credit-packages");
+        if (creditPackage) {
+          creditPackage.click();
+        }
+      }, 100); // Small delay to ensure element is available
+    }
+  });
+
+}
