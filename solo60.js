@@ -1,7 +1,5 @@
 
 
-<script>
-
   $('.download-button.on-lower-bp.dl-dropdown-toggle').on('click', function() {
     var userAgent = navigator.userAgent || navigator.vendor || window.opera;
 
@@ -112,46 +110,5 @@
 
   //END OF SCROLL DISABLE
 
-  //FOOTER ANIMATION 100VH
-  ScrollTrigger.matchMedia({
-
-    "(min-width: 481px)": function () {
-
-      gsap.registerPlugin(ScrollTrigger);
-
-      ScrollTrigger.defaults({
-        markers: false
-      });
 
 
-      // Move Section Up
-      $(".pseudo-footer").each(function (index) {
-        let triggerElement = $(this);
-        let targetElement = $(".footer-container");
-
-        let tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: triggerElement,
-            // trigger element - viewport
-            start: "top bottom",
-            end: "bottom bottom",
-            scrub: 0.1,
-            invalidateOnRefresh: true
-          }
-        });
-        tl.fromTo(targetElement, {
-          y: "20%",
-          duration: 1
-        }, {
-          y: "0%",
-          duration: 1
-        });
-      });
-    },
-
-  });
-
-  //END FOOTER ANIMATION 100VH
-
-
-</script>
