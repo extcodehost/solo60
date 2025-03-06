@@ -108,7 +108,7 @@ $('.download-button.on-lower-bp.dl-dropdown-toggle').on('click', function() {
 
   //END OF SCROLL DISABLE
 
-
+//HOMEPAGE CODE
 if ($(".this-is-homepage")[0]){
 
     let splide1 = new Splide('.slider1', {
@@ -234,3 +234,62 @@ $(document).ready(function(){
 });
 }
 
+//ABOUT CODE
+if ($(".this-is-about")[0]){
+     let splide2 = new Splide('.slider2', {
+    perPage: 1,
+    perMove: 1,
+    //type: 'fade',
+    classes: {
+      pagination: 'splide__pagination why-pagination',
+      page: 'splide__pagination__page why-page',
+    },
+    speed : 600,
+    autoWidth: true,
+    updateOnMove : true,
+    trimSpace: true,
+  }).mount();
+
+ /* let splide5 = new Splide('.slider5', {
+    perPage: 1,
+    perMove: 1,
+    type: 'loop',
+    gap: '1.32em',
+    arrows: 'slider',
+    speed : 600,
+    dragAngleThreshold: 30,
+    autoWidth: true,
+    trimSpace: true,
+    breakpoints: {
+      767: {
+        perPage: 2,
+        perMove: 1,
+      },
+      479: {
+        perPage: 1,
+        perMove: 1,
+      }
+    }
+  }).mount();*/
+
+
+  //arrows anim
+  // For Slider 2
+  splide2.on('moved', function (newIndex) {
+    let $sliderSection = $('.slider2').closest('.section');
+
+    // Enable/Disable prev arrow
+    if (newIndex === 0) {
+      $sliderSection.find('.prev-arrow-n').removeClass('active_arrow');
+    } else {
+      $sliderSection.find('.prev-arrow-n').addClass('active_arrow');
+    }
+
+    // Enable/Disable next arrow
+    if (newIndex === splide2.length - 1) {
+      $sliderSection.find('.next-arrow-n').removeClass('active_arrow');
+    } else {
+      $sliderSection.find('.next-arrow-n').addClass('active_arrow');
+    }
+  });
+}
