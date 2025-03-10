@@ -1,4 +1,4 @@
-$('.download-button.on-lower-bp.dl-dropdown-toggle').on('click', function() {
+$('.download-button.on-lower-bp.dl-dropdown-toggle, .mobile-dl').on('click', function() {
     var userAgent = navigator.userAgent || navigator.vendor || window.opera;
 
     if (/android/i.test(userAgent)) {
