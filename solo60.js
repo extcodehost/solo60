@@ -380,3 +380,15 @@ if ($(".this-is-pricing")[0]){
   });
 
 }
+
+
+if ($(".video")[0]){
+    $(window).on("load", function () {
+    
+        $(".video").each(function () {
+            this.play();
+        });
+    
+        $(".explore-trigger").("click");
+    });
+}
